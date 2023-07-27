@@ -144,6 +144,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="utils\Bezier.cpp" />
+    <ClCompile Include="utils\Vector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utils\Bezier.h" />
+    <ClInclude Include="utils\Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
