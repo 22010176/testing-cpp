@@ -5,6 +5,7 @@
 
 #include <cmath>
 #include <functional>
+using namespace std;
 
 struct Vector2 {
 	double x, y;
@@ -23,7 +24,7 @@ struct Vector2 {
 
 namespace BasisTransform {
 	Vector2 LinearTransform(double matrix[2][2], Vector2 vec);
-	Vector2 GeneralTransform(double (*f1)(Vector2), double(*f2)(Vector2), Vector2 coor);
+	Vector2 GeneralTransform(function<double(Vector2)>f1, function<double(Vector2)>f2, Vector2 coor);
 }
 
 #endif // !_Linear_

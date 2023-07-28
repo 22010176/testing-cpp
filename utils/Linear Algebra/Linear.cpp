@@ -17,6 +17,6 @@ Vector2 BasisTransform::LinearTransform(double matrix[2][2], Vector2 vec) {
 	return Vector2(vec.x * matrix[0][0] + vec.y * matrix[0][1], vec.x * matrix[1][0] + vec.y * matrix[1][1]);
 }
 
-Vector2 BasisTransform::GeneralTransform(double (*f1)(Vector2), double(*f2)(Vector2), Vector2 coor) {
+Vector2 BasisTransform::GeneralTransform(function<double(Vector2)>f1, function<double(Vector2)> f2, Vector2 coor) {
 	return Vector2(f1(coor), f2(coor));
 }

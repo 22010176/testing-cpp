@@ -148,8 +148,10 @@
     <ClCompile Include="utils\Coordinates\Coor.cpp" />
     <ClCompile Include="utils\Draws.cpp" />
     <ClCompile Include="utils\Linear Algebra\Linear.cpp" />
+    <ClCompile Include="utils\Linear Algebra\Matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="utils\Linear Algebra\Matrix.h" />
     <ClInclude Include="utils\Draws.h" />
     <ClInclude Include="utils\Bezier.h" />
     <ClInclude Include="utils\Coordinates\Coor.h" />

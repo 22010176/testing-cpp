@@ -2,7 +2,7 @@
 
 uint64_t Factorial(int x) {
 	if (x < 0) return 0;
-	uint64_t a = 1; for (int i = 1; i <= x; i++) a *= (uint64_t)i;
+	uint64_t a = 1; for (uint64_t i = 1; i <= x; i++) a *= i;
 	return a;
 }
 
@@ -11,7 +11,6 @@ uint64_t* CalcFactorials(int x) {
 	for (int i = 1; i <= x; i++) a[i] = a[i - 1] * i;
 	return a;
 }
-
 vector<Vector2> GetBezierCo(vector<Vector2> points) {
 	int len = (int)points.size();
 	if (len < 2) return vector<Vector2>();
@@ -30,7 +29,7 @@ void DrawBezierCurf(SDL_Renderer* renderer, vector<Vector2> Points, double dx) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	int len = (int)Points.size();
 	if (len < 2) return;
-	
+
 	vector<Vector2> Cof = GetBezierCo(Points);
 	double x0 = Points[0].x, y0 = Points[0].y, x = 0, y = 0;
 	for (double i = 0; i <= 1.f + dx / 2; i += dx) {

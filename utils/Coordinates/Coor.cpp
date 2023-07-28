@@ -25,11 +25,9 @@ void DrawGrid(SDL_Renderer* renderer, int div, int x, int y) {
 void DrawAxis(SDL_Renderer* renderer, uint32_t x, uint32_t y) {
 	int width, height;
 	SDL_GetRendererOutputSize(renderer, &width, &height);
-	SDL_Color color = { 255,255,255 };
-
 	int axisSize = 5, fontSize = 20;
 
-	DisplayText(renderer, "fonts/Source_Code_Pro/static/SourceCodePro-Regular.ttf", color, "O", CreateRect(x - axisSize - fontSize, y - axisSize - fontSize * 2, fontSize, fontSize * 2));
+	DisplayText(renderer, "O", CreateRect(x - axisSize - fontSize, y - axisSize - fontSize * 2, fontSize, fontSize * 2));
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	DrawRect(renderer, 0, y - axisSize / 2, width, axisSize);			// Ox
@@ -42,12 +40,13 @@ void DrawOxyCoordinate(SDL_Renderer* renderer, int x, int y, int div) {
 }
 
 double GetRange(int div, int size) { return (double)size / div; }
-double GetCoordinates(double range, double origin, double div, double pos) { return (pos - origin) / div; }
+double GetCoordinates(double range, double origin, double div, double pos) {
+	return (pos - origin) / div;
+}
 void DisplayPos(SDL_Renderer* renderer, int x0, int y0, int x, int y, int div) {
 	int w, h;	SDL_GetRendererOutputSize(renderer, &w, &h);
 	double PosX = GetCoordinates(w, x0, div, x), PosY = -GetCoordinates(h, y0, div, y);
 
 	string content = to_string(PosX) + " " + to_string(PosY);
-	SDL_Color white = { 255,255,255 };
-	DisplayText(renderer, "./fonts/Source_Code_Pro/static/SourceCodePro-Bold.ttf", white, content, CreateRect(0, 0, 15 * (uint32_t)content.size(), 20));
+	DisplayText(renderer, content, CreateRect(0, 0, 15 * (uint32_t)content.size(), 20));
 }

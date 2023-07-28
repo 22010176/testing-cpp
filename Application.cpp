@@ -3,9 +3,12 @@
 #include <cmath>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include <functional>
 
 #include "utils/Bezier.h"
 #include "utils/Linear Algebra/Linear.h"
+#include "utils/Linear Algebra/Matrix.h"
 #include "utils/Coordinates/Coor.h"
 #include "utils/Draws.h"
 
@@ -13,15 +16,14 @@
 #include <SDL_ttf.h>
 
 using namespace std;
-
 uint32_t WIDTH = 500, HEIGHT = 500, OldWidth = 0, OldHeight = 0, fps = 30;
 
-int main(int, char* []) {
+void _main(int a, char* b[]) {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	TTF_Init();
 
 	SDL_Window* window = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	int x, y, aw, ah;
 
@@ -71,6 +73,11 @@ int main(int, char* []) {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
 
+int main(int a, char* b[]) {
+	//_main(a, b);
+	double** ae = CreateMatrix(2, 2);
+	
 	return 0;
 }
