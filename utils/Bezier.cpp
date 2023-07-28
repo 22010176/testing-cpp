@@ -30,7 +30,7 @@ void DrawBezierCurf(SDL_Renderer* renderer, vector<Vector2> Points, double dx) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	int len = (int)Points.size();
 	if (len < 2) return;
-
+	
 	vector<Vector2> Cof = GetBezierCo(Points);
 	double x0 = Points[0].x, y0 = Points[0].y, x = 0, y = 0;
 	for (double i = 0; i <= 1.f + dx / 2; i += dx) {

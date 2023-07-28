@@ -146,9 +146,11 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="utils\Bezier.cpp" />
     <ClCompile Include="utils\Coordinates\main.cpp" />
+    <ClCompile Include="utils\Draws.cpp" />
     <ClCompile Include="utils\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="utils\Draws.h" />
     <ClInclude Include="utils\Bezier.h" />
     <ClInclude Include="utils\Coordinates\main.h" />
     <ClInclude Include="utils\Vector.h" />
