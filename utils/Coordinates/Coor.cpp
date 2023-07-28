@@ -1,14 +1,14 @@
-#include "main.h"
+#include "Coor.h"
 
 void DrawGrid(SDL_Renderer* renderer, int div, int x, int y) {
 	int width, height;
 	SDL_GetRendererOutputSize(renderer, &width, &height);
-	int rectSize = 2, i = 1;
+	int rectSize = 1, i = 0;
 	bool posVe = true, negVe = true, posHo = true, negHo = true;
 
 	SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
 	while (posVe || negVe || posHo || negHo) {
-		int vePos = i * div - rectSize / 2, hoPos = i * div - rectSize / 2;
+		int vePos = i++ * div - rectSize / 2, hoPos = i * div - rectSize / 2;
 
 		if (x + vePos >= width) posVe = false;
 		if (x - vePos <= 0) negVe = false;
@@ -19,7 +19,6 @@ void DrawGrid(SDL_Renderer* renderer, int div, int x, int y) {
 		if (negVe) DrawRect(renderer, x - vePos - rectSize / 2, 0, rectSize, height); // positive Vertical
 		if (posHo) DrawRect(renderer, 0, y + hoPos - rectSize / 2, width, rectSize); // positive Vertical
 		if (negVe) DrawRect(renderer, 0, y - hoPos - rectSize / 2, width, rectSize); // positive Vertical
-		i++;
 	}
 }
 
@@ -42,5 +41,13 @@ void DrawOxyCoordinate(SDL_Renderer* renderer, int x, int y, int div) {
 	DrawAxis(renderer, x, y);
 }
 
-double GetRange(uint32_t div, uint32_t size) { return size / div; }
-Vector2 GetCoordinates(double range, double origin, double div) { return Vector2((origin - range) / div, (range - origin) / div); }
+double GetRange(int div, int size) { return (double)size / div; }
+double GetCoordinates(double range, double origin, double div, double pos) { return (pos - origin) / div; }
+void DisplayPos(SDL_Renderer* renderer, int x0, int y0, int x, int y, int div) {
+	int w, h;	SDL_GetRendererOutputSize(renderer, &w, &h);
+	double PosX = GetCoordinates(w, x0, div, x), PosY = -GetCoordinates(h, y0, div, y);
+
+	string content = to_string(PosX) + " " + to_string(PosY);
+	SDL_Color white = { 255,255,255 };
+	DisplayText(renderer, "./fonts/Source_Code_Pro/static/SourceCodePro-Bold.ttf", white, content, CreateRect(0, 0, 15 * (uint32_t)content.size(), 20));
+}

@@ -145,15 +145,15 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="utils\Bezier.cpp" />
-    <ClCompile Include="utils\Coordinates\main.cpp" />
+    <ClCompile Include="utils\Coordinates\Coor.cpp" />
     <ClCompile Include="utils\Draws.cpp" />
-    <ClCompile Include="utils\Vector.cpp" />
+    <ClCompile Include="utils\Linear Algebra\Linear.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Draws.h" />
     <ClInclude Include="utils\Bezier.h" />
-    <ClInclude Include="utils\Coordinates\main.h" />
-    <ClInclude Include="utils\Vector.h" />
+    <ClInclude Include="utils\Coordinates\Coor.h" />
+    <ClInclude Include="utils\Linear Algebra\Linear.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

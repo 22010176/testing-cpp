@@ -21,13 +21,13 @@
     <ClCompile Include="utils\Bezier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utils\Vector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="utils\Coordinates\main.cpp">
+    <ClCompile Include="utils\Coordinates\Coor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="utils\Draws.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\Linear Algebra\Linear.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,13 +35,13 @@
     <ClInclude Include="utils\Bezier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utils\Vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utils\Coordinates\main.h">
+    <ClInclude Include="utils\Coordinates\Coor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utils\Draws.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\Linear Algebra\Linear.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

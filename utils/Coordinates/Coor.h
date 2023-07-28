@@ -8,9 +8,10 @@
 #include <cstdlib>
 #include <iostream>
 #include <SDL.h>
+#include <iomanip>
 
 #include "../Draws.h"
-#include "../Vector.h"
+#include "../Linear Algebra/Linear.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ void DrawGrid(SDL_Renderer* renderer, int div, int x, int y);
 
 void DrawOxyCoordinate(SDL_Renderer* renderer, int x, int y, int div);
 
-double GetRange(uint32_t div, uint32_t size);
-Vector2 GetCoordinates(double range, double pos, double div);
+double GetRange(int div, int size);
+double GetCoordinates(double range, double origin, double div, double pos);
+void DisplayPos(SDL_Renderer* renderer, int x0, int y0, int x, int y, int div);
 #endif // !_Coordinate_XY_

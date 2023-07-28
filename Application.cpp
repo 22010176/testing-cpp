@@ -5,8 +5,8 @@
 #include <string>
 
 #include "utils/Bezier.h"
-#include "utils/Vector.h"
-#include "utils/Coordinates/main.h"
+#include "utils/Linear Algebra/Linear.h"
+#include "utils/Coordinates/Coor.h"
 #include "utils/Draws.h"
 
 #include <SDL.h>
@@ -14,7 +14,7 @@
 
 using namespace std;
 
-uint32_t WIDTH = 500, HEIGHT = 500, OldWidth = 0, OldHeight = 0, fps = 60;
+uint32_t WIDTH = 500, HEIGHT = 500, OldWidth = 0, OldHeight = 0, fps = 30;
 
 int main(int, char* []) {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -23,7 +23,6 @@ int main(int, char* []) {
 	SDL_Window* window = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	SDL_Color color = { 255,255,255 };
 	int x, y, aw, ah;
 
 	bool isRunning = true;
@@ -33,10 +32,8 @@ int main(int, char* []) {
 	vector<SDL_Rect> rects;
 	vector<Vector2> Points;
 
-	int x0 = WIDTH / 2, y0 = HEIGHT / 2, div = 100;
+	int x0 = WIDTH / 2, y0 = HEIGHT / 2, div = 40;
 	uint32_t tick = SDL_GetTicks();
-	Vector2 rangeOx = GetCoordinates(WIDTH, x0, div), rangeOy = GetCoordinates(HEIGHT, y0, div);
-	
 	while (isRunning) {
 		if (SDL_GetTicks() - tick < 1000 / fps) continue;
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -53,8 +50,6 @@ int main(int, char* []) {
 			OldWidth = WIDTH, OldHeight = HEIGHT;
 			WIDTH = aw, HEIGHT = ah;
 			x0 = WIDTH / 2, y0 = HEIGHT / 2;
-
-			rangeOx = GetCoordinates(WIDTH, x0, div), rangeOy = GetCoordinates(HEIGHT, y0, div);
 		}
 
 		while (SDL_PollEvent(&event)) {
@@ -66,7 +61,8 @@ int main(int, char* []) {
 				break;
 			}
 		}
-		DisplayText(renderer, "./fonts/Source_Code_Pro/static/SourceCodePro-Bold.ttf", color, result, CreateRect(0, 0, (int)result.length() * 15, 25));
+		const uint8_t* keys = SDL_GetKeyboardState(NULL);
+		DisplayPos(renderer, x0, y0, x, y, div);
 		SDL_RenderPresent(renderer);
 		tick = SDL_GetTicks();
 	}
@@ -75,7 +71,6 @@ int main(int, char* []) {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
-
 
 	return 0;
 }

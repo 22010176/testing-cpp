@@ -1,12 +1,11 @@
 #include "Draws.h"
 
 SDL_Rect CreateRect(int x, int y, int w, int h) {
-	SDL_Rect a = { x,y,w,h };
-	return a;
+	SDL_Rect a = { x,y,w,h };	return a;
 }
-
 void DrawRect(SDL_Renderer* renderer, int x, int y, int width, int height) {
 	SDL_Rect a = CreateRect(x, y, width, height);
+
 	SDL_RenderFillRect(renderer, &a);
 	SDL_free(&a);
 }
