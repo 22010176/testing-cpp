@@ -11,7 +11,7 @@
 #include <functional>
 
 #include "../Draws.h"
-#include "../Linear Algebra/Linear.h"
+#include "../Linear Algebra/Linear_Algebra.h"
 
 using namespace std;
 

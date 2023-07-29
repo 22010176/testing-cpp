@@ -33,6 +33,12 @@
     <ClCompile Include="utils\Linear Algebra\Matrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="utils\Linear Algebra\Others.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\Linear Algebra\Linear_Algebra.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Bezier.h">
@@ -42,9 +48,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utils\Draws.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utils\Linear Algebra\Linear.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utils\Linear Algebra\Matrix.h">

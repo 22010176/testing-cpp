@@ -1,14 +1,20 @@
 #pragma once
 
-#ifndef _Linear_
-#define _Linear_
+#ifndef _LINEAR_ALGEBRA_
+#define _LINEAR_ALGEBRA_
 
-#include <cmath>
 #include <functional>
+#include <cmath>
+#include <cstdlib>
+#include <cstdint>
+#include <cstdio>
+#include <iostream>
+#include <string>
+
 using namespace std;
 
 struct Vector2 {
-	double x, y;
+	double x = 0, y = 0;
 	Vector2();
 	Vector2(double x, double y);
 	double Len();
@@ -22,9 +28,6 @@ struct Vector2 {
 	Vector2 operator*(double scalar);
 };
 
-namespace BasisTransform {
-	Vector2 LinearTransform(double matrix[2][2], Vector2 vec);
-	Vector2 GeneralTransform(function<double(Vector2)>f1, function<double(Vector2)>f2, Vector2 coor);
-}
+float RoundNumber(float x, int pre = 2);
 
-#endif // !_Linear_
+#endif

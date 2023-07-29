@@ -144,18 +144,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="utils\Linear Algebra\Others.cpp" />
     <ClCompile Include="utils\Bezier.cpp" />
     <ClCompile Include="utils\Coordinates\Coor.cpp" />
     <ClCompile Include="utils\Draws.cpp" />
     <ClCompile Include="utils\Linear Algebra\Linear.cpp" />
     <ClCompile Include="utils\Linear Algebra\Matrix.cpp" />
+    <ClCompile Include="utils\Linear Algebra\Linear_Algebra.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Linear Algebra\Matrix.h" />
     <ClInclude Include="utils\Draws.h" />
     <ClInclude Include="utils\Bezier.h" />
     <ClInclude Include="utils\Coordinates\Coor.h" />
-    <ClInclude Include="utils\Linear Algebra\Linear.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <SDL.h>
 #include <vector>
-#include "Linear Algebra/Linear.h"
+#include "Linear Algebra/Linear_Algebra.h"
 
 using namespace std;
 

@@ -8,8 +8,7 @@
 #include <ctime>
 
 #include "utils/Bezier.h"
-#include "utils/Linear Algebra/Linear.h"
-#include "utils/Linear Algebra/Matrix.h"
+#include "utils/Linear Algebra/Linear_Algebra.h"
 #include "utils/Coordinates/Coor.h"
 #include "utils/Draws.h"
 
@@ -18,6 +17,13 @@
 
 using namespace std;
 uint32_t WIDTH = 500, HEIGHT = 500, OldWidth = 0, OldHeight = 0, fps = 60;
+
+function<Vector2(Vector2)> ChangeBasis(float div = 50, float x0 = 0, float y0 = 0, float angle = 0) {
+	return [=](Vector2 pos) {
+
+		return Vector2();
+	};
+}
 
 void _main(int a, char* b[]) {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -30,11 +36,21 @@ void _main(int a, char* b[]) {
 	SDL_Event event;
 
 	uint32_t tick = SDL_GetTicks();
+	int x0 = WIDTH / 2, y0 = HEIGHT / 2, div = 50;
+	function<Vector2(Vector2)> _basis = ChangeBasis((float)div, -(float)x0, -(float)y0, (float)180);
+	int mouseX, mouseY;
 	while (isRunning) {
 		if (SDL_GetTicks() - tick < 1000 / fps) continue;
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
 
+		SDL_GetMouseState(&mouseX, &mouseY);
+
+		Vector2 pos = _basis(Vector2(mouseX, mouseY));
+
+		string content = to_string(mouseX) + " " + to_string(mouseY);
+
+		DisplayText(renderer, content, CreateRect(0, 0, 15 * (int)content.length(), 20));
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
 			case SDL_QUIT:
@@ -51,7 +67,7 @@ void _main(int a, char* b[]) {
 }
 
 int main(int a, char* b[]) {
-	srand(time(0)); // generate Random
-	_main(a, b);
+	srand((unsigned int)time(0)); // generate Random
+	//_main(a, b);
 	return 0;
 }

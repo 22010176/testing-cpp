@@ -12,10 +12,6 @@ using namespace std;
 	*	3				*	O	*	*
 */
 
-float RoundNumber(float x, int pre) {
-	int a = (int)powf(10, (float)pre);
-	return roundf(x * a) / a;
-}
 inline void PrintMatrix(float** mat, uint32_t rows, uint32_t cols) {
 	cout << endl;
 	for (uint32_t i = 0; i < rows; i++) {
@@ -74,10 +70,6 @@ float** _AlgebraicAdjoint(float** A, uint32_t rows, uint32_t cols) {
 	return result;
 }
 Matrix::Matrix(uint32_t rows, uint32_t cols, float** matrix) : cols(cols), rows(rows), mat(matrix ? matrix : GenerateMatrix(rows, cols)) {}
-Matrix::Matrix(Vector2 a) : cols(2), rows(1) {
-	mat = CreateMatrix(rows, cols);
-	mat[0][0] = a.x, mat[1][0] = a.y;
-}
 
 float Matrix::Determinant() { return CalcDeterminant(mat, rows, cols); }
 Matrix Matrix::ReverseMatrix() {
