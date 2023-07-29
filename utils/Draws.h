@@ -6,6 +6,8 @@
 #include <string>
 #include <SDL_ttf.h>
 
+#define PATH_SMOOTH 500
+
 using namespace std;
 
 SDL_Rect CreateRect(int x, int y, int w, int h);

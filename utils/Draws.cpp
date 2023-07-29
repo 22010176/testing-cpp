@@ -7,7 +7,7 @@ void DrawRect(SDL_Renderer* renderer, int x, int y, int width, int height) {
 	SDL_free(&a);
 }
 void DisplayText(SDL_Renderer* renderer, const char content[], SDL_Rect rect, SDL_Color color, const char path[]) {
-	TTF_Font* font = TTF_OpenFont(path, 500);
+	TTF_Font* font = TTF_OpenFont(path, PATH_SMOOTH);
 	SDL_Surface* text = TTF_RenderText_Solid(font, content, color);
 	SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer, text);
 	SDL_RenderCopy(renderer, text_texture, NULL, &rect);
@@ -18,7 +18,7 @@ void DisplayText(SDL_Renderer* renderer, const char content[], SDL_Rect rect, SD
 }
 
 void DisplayText(SDL_Renderer* renderer, string content, SDL_Rect rect, SDL_Color color, const char path[]) {
-	TTF_Font* font = TTF_OpenFont(path, 500);
+	TTF_Font* font = TTF_OpenFont(path, PATH_SMOOTH);
 	SDL_Surface* text = TTF_RenderText_Solid(font, content.c_str(), color);
 	SDL_Texture* text_texture = SDL_CreateTextureFromSurface(renderer, text);
 	SDL_RenderCopy(renderer, text_texture, NULL, &rect);

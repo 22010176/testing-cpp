@@ -5,6 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <functional>
+#include <ctime>
 
 #include "utils/Bezier.h"
 #include "utils/Linear Algebra/Linear.h"
@@ -16,7 +17,7 @@
 #include <SDL_ttf.h>
 
 using namespace std;
-uint32_t WIDTH = 500, HEIGHT = 500, OldWidth = 0, OldHeight = 0, fps = 30;
+uint32_t WIDTH = 500, HEIGHT = 500, OldWidth = 0, OldHeight = 0, fps = 60;
 
 void _main(int a, char* b[]) {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -76,8 +77,6 @@ void _main(int a, char* b[]) {
 }
 
 int main(int a, char* b[]) {
-	//_main(a, b);
-	double** ae = CreateMatrix(2, 2);
-	
+
 	return 0;
 }

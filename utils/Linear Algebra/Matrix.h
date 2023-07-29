@@ -6,23 +6,28 @@
 #include <cmath>
 #include <cstdlib>
 #include <cstdint>
+#include <cstdio>
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 struct Matrix {
-private:
-	double _der;
-public:
-	double** mat;
-	uint32_t rows, cols;
-	Matrix(uint32_t rows, uint32_t cols);
-	~Matrix();
-	double Determinant();
-	
+	float** mat; uint32_t rows, cols;
+
+	Matrix(uint32_t rows = 0, uint32_t cols = 0, float** matrix = NULL);
+
+	float Determinant();
+	Matrix Tranpos();
+	Matrix ReverseMatrix();
+	void Print();
+
 	Matrix operator+(Matrix other);
 	Matrix operator-(Matrix other);
 	Matrix operator*(Matrix other);
-	Matrix operator*(double other);
+	Matrix operator*(float other);
+	Matrix operator/(float other);
 	bool operator== (Matrix other);
 };
 
-double** CreateMatrix(uint32_t rows, uint32_t cols);
 #endif
