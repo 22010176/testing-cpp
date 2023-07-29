@@ -15,9 +15,7 @@
 
 using namespace std;
 
-struct Vertex {
-	Vector2 a, b;
-};
+struct Vertex { Vector2 a, b; };
 
 void DrawAxis(SDL_Renderer* renderer, uint32_t x, uint32_t y);
 void DrawGrid(SDL_Renderer* renderer, int div, int x, int y);

@@ -11,13 +11,15 @@ using namespace std;
 		2				*	*	*	*
 	*	3				*	O	*	*
 */
-void PrintMatrix(float** mat, uint32_t rows, uint32_t cols) {
+
+float RoundNumber(float x, int pre) {
+	int a = (int)powf(10, (float)pre);
+	return roundf(x * a) / a;
+}
+inline void PrintMatrix(float** mat, uint32_t rows, uint32_t cols) {
 	cout << endl;
 	for (uint32_t i = 0; i < rows; i++) {
-		for (uint32_t j = 0; j < cols; j++) {
-			float a = mat[i][j];
-			cout << string(10 - to_string(mat[i][j]).length(), ' ') << mat[i][j] << " ";
-		}
+		for (uint32_t j = 0; j < cols; j++) printf("%*.2f", 10, mat[i][j]);
 		cout << endl;
 	}
 	cout << endl;
@@ -31,7 +33,7 @@ float** GenerateMatrix(uint32_t rows, uint32_t cols) {
 	float** a = new float* [rows];
 	for (uint32_t i = 0; i < rows; i++) {
 		a[i] = new float[cols];
-		for (uint32_t j = 0; j < cols; j++) a[i][j] = (float)(rand() % 100);
+		for (uint32_t j = 0; j < cols; j++) a[i][j] = (float)(rand() % 10000) / 100;
 	}
 	return a;
 }
@@ -59,7 +61,7 @@ float CalcDeterminant(float** A, uint32_t rows, uint32_t cols) {
 	}
 	return result;
 }
-float** AlgebraicAdjoint(float** A, uint32_t rows, uint32_t cols) {
+float** _AlgebraicAdjoint(float** A, uint32_t rows, uint32_t cols) {
 	if (rows != cols) return NULL;
 	float** result = CreateMatrix(rows, cols);
 	for (uint32_t i = 0; i < rows; i++) {
@@ -71,12 +73,16 @@ float** AlgebraicAdjoint(float** A, uint32_t rows, uint32_t cols) {
 	}
 	return result;
 }
-Matrix::Matrix(uint32_t rows, uint32_t cols, float** matrix) :cols(cols), rows(rows), mat(matrix ? matrix : GenerateMatrix(rows, cols)) {}
+Matrix::Matrix(uint32_t rows, uint32_t cols, float** matrix) : cols(cols), rows(rows), mat(matrix ? matrix : GenerateMatrix(rows, cols)) {}
+Matrix::Matrix(Vector2 a) : cols(2), rows(1) {
+	mat = CreateMatrix(rows, cols);
+	mat[0][0] = a.x, mat[1][0] = a.y;
+}
+
 float Matrix::Determinant() { return CalcDeterminant(mat, rows, cols); }
 Matrix Matrix::ReverseMatrix() {
 	if (rows != cols) return Matrix();
-	Matrix a(rows, cols, AlgebraicAdjoint(mat, rows, cols));
-	return (a.Tranpos() / Determinant());
+	return Matrix(rows, cols, _AlgebraicAdjoint(mat, rows, cols)).Tranpos() / Determinant();
 }
 Matrix Matrix::Tranpos() {
 	float** a = CreateMatrix(cols, rows);
@@ -123,5 +129,3 @@ Matrix Matrix::operator*(Matrix other) {
 	}
 	return result;
 }
-
-

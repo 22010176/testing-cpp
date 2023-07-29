@@ -22,16 +22,16 @@ void DrawGrid(SDL_Renderer* renderer, int div, int x, int y) {
 	}
 }
 
-void DrawAxis(SDL_Renderer* renderer, uint32_t x, uint32_t y) {
+void DrawAxis(SDL_Renderer* renderer, uint32_t x0, uint32_t y0) {
 	int width, height;
 	SDL_GetRendererOutputSize(renderer, &width, &height);
 	int axisSize = 5, fontSize = 20;
 
-	DisplayText(renderer, "O", CreateRect(x - axisSize - fontSize, y - axisSize - fontSize * 2, fontSize, fontSize * 2));
+	DisplayText(renderer, "O", CreateRect(x0 - axisSize - fontSize, y0 - axisSize - fontSize * 2, fontSize, fontSize * 2));
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-	DrawRect(renderer, 0, y - axisSize / 2, width, axisSize);			// Ox
-	DrawRect(renderer, x - axisSize / 2, 0, axisSize, height);		// Oy
+	DrawRect(renderer, 0, y0 - axisSize / 2, width, axisSize);			// Ox
+	DrawRect(renderer, x0 - axisSize / 2, 0, axisSize, height);		// Oy
 }
 
 void DrawOxyCoordinate(SDL_Renderer* renderer, int x, int y, int div) {

@@ -10,12 +10,14 @@
 #include <iostream>
 #include <string>
 
+#include "Linear.h"
 using namespace std;
 
 struct Matrix {
 	float** mat; uint32_t rows, cols;
 
 	Matrix(uint32_t rows = 0, uint32_t cols = 0, float** matrix = NULL);
+	Matrix(Vector2 a);
 
 	float Determinant();
 	Matrix Tranpos();
@@ -29,5 +31,5 @@ struct Matrix {
 	Matrix operator/(float other);
 	bool operator== (Matrix other);
 };
-
+float RoundNumber(float x, int pre = 2);
 #endif
