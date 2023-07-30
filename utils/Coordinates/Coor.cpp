@@ -3,12 +3,12 @@
 void DrawGrid(SDL_Renderer* renderer, int div, int x, int y) {
 	int width, height;
 	SDL_GetRendererOutputSize(renderer, &width, &height);
-	int rectSize = 1, i = 0;
+	int rectSize = 1, i = 1;
 	bool posVe = true, negVe = true, posHo = true, negHo = true;
 
 	SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255);
 	while (posVe || negVe || posHo || negHo) {
-		int vePos = i++ * div - rectSize / 2, hoPos = i * div - rectSize / 2;
+		int vePos = i * div - rectSize / 2, hoPos = i++ * div - rectSize / 2;
 
 		if (x + vePos >= width) posVe = false;
 		if (x - vePos <= 0) negVe = false;
@@ -40,9 +40,7 @@ void DrawOxyCoordinate(SDL_Renderer* renderer, int x, int y, int div) {
 }
 
 double GetRange(int div, int size) { return (double)size / div; }
-double GetCoordinates(double range, double origin, double div, double pos) {
-	return (pos - origin) / div;
-}
+double GetCoordinates(double range, double origin, double div, double pos) { return (pos - origin) / div; }
 void DisplayPos(SDL_Renderer* renderer, int x0, int y0, int x, int y, int div) {
 	int w, h;	SDL_GetRendererOutputSize(renderer, &w, &h);
 	double PosX = GetCoordinates(w, x0, div, x), PosY = -GetCoordinates(h, y0, div, y);

@@ -28,6 +28,6 @@ struct Vector2 {
 	Vector2 operator*(double scalar);
 };
 
-float RoundNumber(float x, int pre = 2);
+
 
 #endif

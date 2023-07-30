@@ -39,6 +39,12 @@
     <ClCompile Include="utils\Linear Algebra\Linear_Algebra.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Programs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies\OpenGL\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Bezier.h">
@@ -51,6 +57,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utils\Linear Algebra\Matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\Linear Algebra\others.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Programs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\OpenGL\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\OpenGL\khrplatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

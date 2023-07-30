@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ducmi\Downloads\Project1\dependencies\OpenGL;$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ducmi\Downloads\Project1\dependencies\OpenGL;$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ducmi\Downloads\Project1\dependencies\OpenGL;$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -130,7 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ducmi\Downloads\Project1\dependencies\OpenGL;$(SolutionDir)dependencies\SDL2_image-2.6.3\include;$(SolutionDir)dependencies\SDL2_mixer-2.6.3\include;$(SolutionDir)dependencies\SDL2_ttf-2.20.2\include;$(SolutionDir)dependencies\SDL2-2.28.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -144,6 +144,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="dependencies\OpenGL\glad.c" />
+    <ClCompile Include="Programs.cpp" />
     <ClCompile Include="utils\Linear Algebra\Others.cpp" />
     <ClCompile Include="utils\Bezier.cpp" />
     <ClCompile Include="utils\Coordinates\Coor.cpp" />
@@ -153,10 +155,14 @@
     <ClCompile Include="utils\Linear Algebra\Linear_Algebra.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dependencies\OpenGL\glad.h" />
+    <ClInclude Include="dependencies\OpenGL\khrplatform.h" />
+    <ClInclude Include="Programs.h" />
     <ClInclude Include="utils\Linear Algebra\Matrix.h" />
     <ClInclude Include="utils\Draws.h" />
     <ClInclude Include="utils\Bezier.h" />
     <ClInclude Include="utils\Coordinates\Coor.h" />
+    <ClInclude Include="utils\Linear Algebra\others.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
