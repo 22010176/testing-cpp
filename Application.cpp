@@ -3,34 +3,34 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdio>
 
 #include "Programs.h"
 
 using namespace std;
 
-int gHEIGHT = 480, gWIDTH = 640;
-SDL_Window* window = nullptr;
-SDL_GLContext gOpenGLContext = nullptr;
-
 GLuint gVertexArrayObject = 0;
 GLuint gVertexBufferObject = 0;
 GLuint gGraphicsPipelineShaderProgram = 0;
 
+SDL_Window* window = nullptr;
+SDL_GLContext gOpenGLContext = nullptr;
+int gHEIGHT = 480, gWIDTH = 640;
 bool quit = false; // true -> quit
-const string vs =
-"#version 410 core\n"
-"in vec4 position;\n"
-"void main()\n"
-"{\n"
-"	gl_Position = vec4(position.x, position.y, position.z, position.w);\n"
-"}\n";
-const string fs =
-"#version 410 core\n"
-"out vec4 color;\n"
-"void main()\n"
-"{\n"
-"	color = vec4(0, 1, 1, 1);\n"
-"}\n";
+
+string ReadFile(string path) {
+	FILE* t = fopen(path.c_str(), "r");
+	fseek(t, 0, SEEK_END);
+
+	uint32_t len = ftell(t);
+	char* a = new char[len + 1];
+	rewind(t);
+	fread(a, len, 1, t);
+	a[len] = '\0';
+	string result(a);
+	delete[] a;
+	return result;
+}
 
 // Shaders
 GLuint CompileShader(GLuint type, const string& source) {
@@ -54,13 +54,14 @@ GLuint CreateShaderProgram(const string& vs, const string& fs) {
 	glAttachShader(programObject, myVertexShader);
 	glAttachShader(programObject, myGragmentShader);
 	glLinkProgram(programObject);
-
 	glValidateProgram(programObject);
 
 	return programObject;
 }
 void CreateGraphicsPipeline() {
-	gGraphicsPipelineShaderProgram = CreateShaderProgram(vs, fs);
+	string vertexSrc = ReadFile("Shaders/vert.glsl"), fragmentSrc = ReadFile("Shaders/frag.glsl");
+	//cout << vertexSrc << endl << fragmentSrc;
+	gGraphicsPipelineShaderProgram = CreateShaderProgram(vertexSrc, fragmentSrc);
 }
 void GetOpenGLVersionInfo() {
 	cout << "Vendor: " << glGetString(GL_VENDOR) << endl;
@@ -72,9 +73,7 @@ void GetOpenGLVersionInfo() {
 void VertexSpecification() {
 	// CPU
 	vector <GLfloat> vertexPos{
-		0, 0, 0,
-		1, 1, 0,
-		1, 0, 0,
+		0, 0, 0, 1, 1, 0, 1, 0, 0,
 	};
 
 	// GPU
@@ -99,6 +98,7 @@ void Init() {
 		cout << SDL_GetError();
 		exit(1);
 	}
+
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
@@ -120,16 +120,14 @@ void Init() {
 }
 void Input() {
 	SDL_Event e;
-	while (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) quit = true;
-	}
+	while (SDL_PollEvent(&e)) if (e.type == SDL_QUIT) quit = true;
 }
 void PreDraw() {
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 
 	glViewport(0, 0, gWIDTH, gHEIGHT);
-	glClearColor(0, 0, 0.1, 1);
+	glClearColor(0, 0, 0.1f, 1);
 
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 	glUseProgram(gGraphicsPipelineShaderProgram);
@@ -143,9 +141,7 @@ void Draw() {
 void MainLoop() {
 	while (!quit) {
 		Input();
-
 		PreDraw();
-
 		Draw();
 		// upadte window
 		SDL_GL_SwapWindow(window);
@@ -159,6 +155,7 @@ void CleanUp() {
 void _main2(int __a, char* __b[]) {
 	// Set up program
 	Init();
+
 	// set up geometry
 	VertexSpecification();
 
