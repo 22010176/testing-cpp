@@ -5,11 +5,11 @@
 #include <cmath>
 
 #include "Matrix.h"
-#include "Linear_Algebra.h"
+#include "Vec2.h"
 
 float RoundNumber(float x, int pre = 2);
 
-Matrix Vec2ToMat();
-Vector2 MatToVec2();
+Matrix Vec2ToMat(Vec2 vec, int type = 0);
+Vec2 MatToVec2(Matrix mat);
 
 #endif

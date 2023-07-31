@@ -1,7 +1,7 @@
 #include "Programs.h"
 
-function<Vector2(Vector2)> ChangeBasis(float div = 50, float x0 = 0, float y0 = 0, float angle = 0) {
-	return [=](Vector2 pos) {	return Vector2();	};
+function<Vec2(Vec2)> ChangeBasis(float div = 50, float x0 = 0, float y0 = 0, float angle = 0) {
+	return [=](Vec2 pos) {	return Vec2();	};
 }
 
 void _main(int a, char* b[]) {
@@ -18,7 +18,7 @@ void _main(int a, char* b[]) {
 
 	uint32_t tick = SDL_GetTicks();
 	int x0 = WIDTH / 2, y0 = HEIGHT / 2, div = 50;
-	function<Vector2(Vector2)> _basis = ChangeBasis((float)div, -(float)x0, -(float)y0, (float)180);
+	function<Vec2(Vec2)> _basis = ChangeBasis((float)div, -(float)x0, -(float)y0, (float)180);
 	int mouseX, mouseY;
 	while (isRunning) {
 		if (SDL_GetTicks() - tick < 1000 / fps) continue;
@@ -27,7 +27,7 @@ void _main(int a, char* b[]) {
 
 		SDL_GetMouseState(&mouseX, &mouseY);
 
-		Vector2 pos = _basis(Vector2(mouseX, mouseY));
+		Vec2 pos = _basis(Vec2(mouseX, mouseY));
 
 		string content = to_string(mouseX) + " " + to_string(mouseY);
 

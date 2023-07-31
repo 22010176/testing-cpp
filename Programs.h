@@ -13,7 +13,7 @@
 #include <ctime>
 
 #include "utils/Bezier.h"
-#include "utils/Linear Algebra/Linear_Algebra.h"
+#include "utils/Linear Algebra/Vec2.h"
 #include "utils/Coordinates/Coor.h"
 #include "utils/Draws.h"
 

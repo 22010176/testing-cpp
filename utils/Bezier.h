@@ -8,12 +8,12 @@
 #include <cstdlib>
 #include <SDL.h>
 #include <vector>
-#include "Linear Algebra/Linear_Algebra.h"
+#include "Linear Algebra/Vec2.h"
 
 using namespace std;
 
-vector<Vector2> GetBezierCo(vector<Vector2> points);
-void DrawBezierCurf(SDL_Renderer* renderer, vector<Vector2> Points, double dx = 0.01);
+vector<Vec2> GetBezierCo(vector<Vec2> points);
+void DrawBezierCurf(SDL_Renderer* renderer, vector<Vec2> Points, double dx = 0.01);
 uint64_t* CalcFactorials(int x);
 uint64_t Factorial(int x);
 

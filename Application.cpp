@@ -6,6 +6,8 @@
 #include <cstdio>
 
 #include "Programs.h"
+#include "utils/Linear Algebra/Matrix.h"
+#include "utils/Linear Algebra/others.h"
 
 using namespace std;
 
@@ -72,9 +74,7 @@ void GetOpenGLVersionInfo() {
 
 void VertexSpecification() {
 	// CPU
-	vector <GLfloat> vertexPos{
-		0, 0, 0, 1, 1, 0, 1, 0, 0,
-	};
+	vector <GLfloat> vertexPos{	0, 0, 0, 1, 1, 0, 1, 0, 0	};
 
 	// GPU
 	glGenVertexArrays(1, &gVertexArrayObject);
@@ -169,10 +169,10 @@ void _main2(int __a, char* __b[]) {
 	CleanUp();
 }
 
-
 int main(int __a, char* __b[]) {
 	srand((uint32_t)time(0)); // generate Random
 
-	_main2(__a, __b);
+	Vec2ToMat(Vec2(1, 2)).Print();
+	
 	return 0;
 }

@@ -70,7 +70,6 @@ float** _AlgebraicAdjoint(float** A, uint32_t rows, uint32_t cols) {
 	return result;
 }
 Matrix::Matrix(uint32_t rows, uint32_t cols, float** matrix) : cols(cols), rows(rows), mat(matrix ? matrix : GenerateMatrix(rows, cols)) {}
-
 float Matrix::Determinant() { return CalcDeterminant(mat, rows, cols); }
 Matrix Matrix::ReverseMatrix() {
 	if (rows != cols) return Matrix();
